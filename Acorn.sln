@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcornLib", "AcornLib\AcornLib.csproj", "{E7596FDA-4B0C-470F-AC74-AB254B018D3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acorn", "AcornLib\Acorn.csproj", "{E7596FDA-4B0C-470F-AC74-AB254B018D3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcornConsole", "AcornConsole\AcornConsole.csproj", "{467B90CE-2A63-4F41-ACA1-9BF3582E159B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acornica", "Acornica\Acornica.csproj", "{E0EDEA51-19EC-4710-BAA2-CDF48808B592}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +25,16 @@ Global
 		{E7596FDA-4B0C-470F-AC74-AB254B018D3D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E7596FDA-4B0C-470F-AC74-AB254B018D3D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E7596FDA-4B0C-470F-AC74-AB254B018D3D}.Release|x86.ActiveCfg = Release|Any CPU
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Debug|x86.ActiveCfg = Debug|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Debug|x86.Build.0 = Debug|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Release|Any CPU.ActiveCfg = Release|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Release|Mixed Platforms.Build.0 = Release|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Release|x86.ActiveCfg = Release|x86
-		{467B90CE-2A63-4F41-ACA1-9BF3582E159B}.Release|x86.Build.0 = Release|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Debug|x86.ActiveCfg = Debug|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Debug|x86.Build.0 = Debug|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Release|Any CPU.ActiveCfg = Release|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Release|x86.ActiveCfg = Release|x86
+		{E0EDEA51-19EC-4710-BAA2-CDF48808B592}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

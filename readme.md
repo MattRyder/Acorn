@@ -1,16 +1,18 @@
-# Acorn #
+# Acorn
 A .NET Library for parsing "iTunes Music Library.xml" files
+(https://github.com/MattRyder/Acorn)
 
 ####To Build:
-- Compile in Visual Studio
+- Open Acorn.sln and compile in Visual Studio.
 
 
 ####To Use:
-- Add as a reference to your project.
+- Add as a reference to your project. (Right Click > Add Reference...)
+- (optional) Add 'Acorn' namespace to the project. ("using Acorn;")
 
 
-####Example:
-
+####Examples:
+    
     public static void main(string[] args)
     {
         Library library = new Library(@"C:\User\Foo\Music\iTunes\iTunes Music Library.xml");

@@ -6,7 +6,9 @@ namespace Acorn
     {
         public static readonly string[] Attributes = new string[] { "Track ID", "Name", "Artist", "Album Artist", 
                                                   "Album", "Genre", "Kind", "Size", "Total Time", "Track Number",
-                                                  "Year", "Bit Rate", "Sample Rate", "Persistent ID", "Location" };
+                                                  "Track Count", "Year", "Date Modified", "Date Added", "Bit Rate",
+                                                  "Sample Rate", "Comments", "Skip Count", "Skip Date", "Persistent ID", 
+                                                  "Location" };
 
         Dictionary<string, object> songAttributes;
 
@@ -15,6 +17,9 @@ namespace Acorn
             get { return songAttributes; }
         }
 
+        /// <summary>
+        /// An object representation of a Song
+        /// </summary>
         public Song() 
         {
             songAttributes = new Dictionary<string, object>();
@@ -33,21 +38,9 @@ namespace Acorn
         /// </summary>
         public object getAttribute(string attributeKey)
         {
-            return songAttributes[attributeKey] != null ? songAttributes[attributeKey] : null;
-        }
-
-        /// <summary>
-        /// Returns all track attributes as a Comma Separated Value row
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            string s = string.Empty;
-
-            foreach (string attribute in songAttributes.Keys)
-                s += songAttributes[attribute] + ", ";
-
-            return s;
+            if(songAttributes.ContainsKey(attributeKey))
+                return songAttributes[attributeKey];
+            else return null;
         }
     }
 }

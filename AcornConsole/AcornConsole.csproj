@@ -50,7 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AcornLib\AcornLib.csproj">
+    <ProjectReference Include="..\AcornLib\Acorn.csproj">
       <Project>{E7596FDA-4B0C-470F-AC74-AB254B018D3D}</Project>
       <Name>AcornLib</Name>
     </ProjectReference>

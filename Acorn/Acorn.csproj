@@ -8,8 +8,8 @@
     <ProjectGuid>{E7596FDA-4B0C-470F-AC74-AB254B018D3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AcornLib</RootNamespace>
-    <AssemblyName>AcornLib</AssemblyName>
+    <RootNamespace>Acorn</RootNamespace>
+    <AssemblyName>Acorn</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Album.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="LibraryParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

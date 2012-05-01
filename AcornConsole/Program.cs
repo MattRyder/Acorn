@@ -10,9 +10,8 @@ namespace AcornConsole
     {
         static void Main(string[] args)
         {
-            Library library = new Library(@"C:\Users\Matt\Documents\iTunes Music Library.xml");
-            List<Song> songs = new Library(@"C:\Users\Matt\Documents\iTunes Music Library.xml").parseSongs();
-
+            Library lib = new Library(@"C:\Users\Matt\Documents\iTunes Music Library.xml");
+            lib.initializeLibrary();
         }
     }
 }

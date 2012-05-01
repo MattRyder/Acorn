@@ -35,12 +35,11 @@ namespace Acorn
             string songAlbumName;
             bool isAdded = false;
 
-            List<Song> songs;
             albums = new List<Album>();
 
             if (libraryLocation != string.Empty)
             {
-                songs = parser.getSongsFromLibrary();
+                List<Song> songs = parser.parse();
 
                 foreach (Song song in songs)
                 {

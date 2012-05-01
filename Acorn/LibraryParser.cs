@@ -35,50 +35,49 @@ namespace Acorn
         /// Parses the iTunes Music Library.xml for all audio files
         /// </summary>
         /// <returns>A List of Song objects</returns>
-        public List<Song> getSongsFromLibrary()
+        public List<Song> parse()
         {
-            Song song;
-            songs = new List<Song>();
-            bool validSong;
-            int attribCount;
+            int dictCount = 0;
+            bool isValidSong;
+            string attributeKey;
 
-            while (getCurrentKeyNodeValue() != "Tracks")
-                reader.Read();
+            List<Song> songs = new List<Song>();
+            Song song = new Song();
 
-            while (reader.Depth < 3)
-                moveToNextDict();
-
-            while (!reader.EOF)
+            while (reader.Read())
             {
-                song = new Song();
-                validSong = true;
-                attribCount = 0;
-
-                while (!isEndOfDict())
+                if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "dict"))
                 {
-                    reader.Read();
+                    dictCount++; //Current node is a <dict> element, increment count
+                    song = new Song(); //Create a new Song object
+                }
 
-                    string attributeKey = getCurrentKeyNodeValue();
+                else if ((reader.NodeType == XmlNodeType.EndElement) && (reader.Name == "dict"))
+                {
+                    dictCount--; //Current node is a </dict> element, decrement count
 
+                    //Did we just leave a Song's dictionary?
+                    if (song.SongAttributes.Count() > 0)
+                        songs.Add(song);
+                }
+
+                if ((dictCount == 3) && ((attributeKey = getKeyNodeValue()) != null))
+                {
                     if (Song.Attributes.Contains(attributeKey))
                     {
                         object attributeValue = getAttributeNodeValue();
-
                         if ((attributeKey == "Kind") && (attributeValue.ToString().IndexOf("audio") < 0))
                         {
-                            validSong = false;
-                            break; //Not an audio file
+                            isValidSong = false; //Not an audio file
                         }
 
                         song.setAttribute(attributeKey, attributeValue);
-                        attribCount++;
                     }
                 }
 
-                if(validSong && attribCount > 4)
-                    songs.Add(song);
-
-                moveToNextDict();
+                //Finished collecting songs, and left the "Tracks" dict?
+                if ((songs.Count() > 0) && (dictCount < 2))
+                    return songs;
             }
             return songs;
         }
@@ -87,7 +86,7 @@ namespace Acorn
         /// Gets the current node value of reader if the current node is a <key> element
         /// </summary>
         /// <returns></returns>
-        private string getCurrentKeyNodeValue()
+        private string getKeyNodeValue()
         {
             XElement element;
             if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "key"))
@@ -105,37 +104,6 @@ namespace Acorn
         private object getAttributeNodeValue()
         {
             XElement element = (XElement)XNode.ReadFrom(reader);
-
-            return parseTypeFromXElement(element);
-        }
-
-        /// <summary>
-        /// Moves to the next <dict> node in the stream
-        /// </summary>
-        private void moveToNextDict()
-        {
-            while (reader.Read())
-            {
-                if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "dict"))
-                    return;
-            }
-        }
-
-        /// <summary>
-        /// Checks whether the current node is a </dict> tag
-        /// </summary>
-        private bool isEndOfDict()
-        {
-            if ((reader.NodeType == XmlNodeType.EndElement) && (reader.Name == "dict"))
-                return true;
-            else return false;
-        }
-
-        /// <summary>
-        /// Pulls the Data Type from the XML Tag. E.g. int type from "<integer>"
-        /// </summary>
-        private object parseTypeFromXElement(XElement element)
-        {
             string elementName = element.Name.LocalName;
 
             try
@@ -157,12 +125,11 @@ namespace Acorn
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception Thrown: " + e.Message);
+                throw e;
             }
 
             //Unhandled data type, return string value:
             return elementName.ToString();
         }
-
     }
 }

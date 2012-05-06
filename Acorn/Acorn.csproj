@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Album.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="LibraryParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

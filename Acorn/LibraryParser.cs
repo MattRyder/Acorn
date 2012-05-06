@@ -38,7 +38,7 @@ namespace Acorn
         public List<Song> parse()
         {
             int dictCount = 0;
-            bool isValidSong;
+            bool isValidSong = false;
             string attributeKey;
 
             List<Song> songs = new List<Song>();
@@ -56,9 +56,12 @@ namespace Acorn
                 {
                     dictCount--; //Current node is a </dict> element, decrement count
 
-                    //Did we just leave a Song's dictionary?
-                    if (song.SongAttributes.Count() > 0)
+                    //Did we just leave a Song's dictionary? Is it a valid song?
+                    if ((song.SongAttributes.Count() > 0) && isValidSong)
+                    {
                         songs.Add(song);
+                    }
+                    isValidSong = true; //Reset valid song flag
                 }
 
                 if ((dictCount == 3) && ((attributeKey = getKeyNodeValue()) != null))

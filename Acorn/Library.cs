@@ -3,12 +3,12 @@
 namespace Acorn
 {
     /// <summary>
-    /// Represents an iTunes Library, containing media such as Songs or Video
+    /// Represents an iTunes Library, containing media such as Song
     /// </summary>
     public class Library
     {
         LibraryParser parser;
-        List<Album> albums;
+        List<Song> songs;
 
         string libraryLocation;
 
@@ -18,10 +18,10 @@ namespace Acorn
             set { libraryLocation = value; }
         }
 
-        public List<Album> Albums
+        public List<Song> Songs
         {
-            get { return albums; }
-            set { albums = value; }
+            get { return songs; }
+            set { songs = value; }
         }
 
         public Library(string libraryLocation)
@@ -30,46 +30,13 @@ namespace Acorn
             parser = new LibraryParser(libraryLocation);
         }
 
-        public bool initializeLibrary()
+        public List<Song> initializeLibrary()
         {
-            string songAlbumName;
-            bool isAdded = false;
-
-            albums = new List<Album>();
-
             if (libraryLocation != string.Empty)
             {
-                List<Song> songs = parser.parse();
-
-                foreach (Song song in songs)
-                {
-                    isAdded = false;
-
-                    //If the song has an album name, use it. Otherwise, put them all in "Unknown Album"
-                    if ((songAlbumName = (string)song.getAttribute("Album")) == null)
-                        songAlbumName = "Unknown Album";
-
-                    foreach (Album album in albums)
-                    {
-                        if (album.Name == songAlbumName)
-                        {
-                            album.Songs.Add(song);
-                            isAdded = true;
-                            break;
-                        }
-                    }
-
-                    if (!isAdded)
-                    {
-                        //Album doesn't exist, create new album for song:
-                        albums.Add(new Album(songAlbumName, song));
-                    }
-                }
-                return true;
-
+                return parser.parse();
             }
-            else return false;
-
+            else return null;
         }
     }
 }

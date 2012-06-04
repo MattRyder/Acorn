@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Acorn
+namespace Acorn.iTunes
 {
     /// <summary>
     /// Loads and parses through the iTunes Music Library.xml file.
@@ -28,7 +28,9 @@ namespace Acorn
             settings = new XmlReaderSettings();
             settings.DtdProcessing = DtdProcessing.Parse;
 
-            reader = XmlReader.Create(libraryLocation, settings);
+            //Verify a valid library at the location:
+            if(System.IO.File.Exists(libraryLocation))
+                reader = XmlReader.Create(libraryLocation, settings); 
         }
 
         /// <summary>
@@ -40,6 +42,9 @@ namespace Acorn
             int dictCount = 0;
             bool isValidSong = false;
             string attributeKey;
+
+            if (!System.IO.File.Exists(libraryLocation))
+                return null;
 
             List<Song> songs = new List<Song>();
             Song song = new Song();

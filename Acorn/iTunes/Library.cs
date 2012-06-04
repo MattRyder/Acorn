@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Acorn
+namespace Acorn.iTunes
 {
     /// <summary>
     /// Represents an iTunes Library, containing media such as Song

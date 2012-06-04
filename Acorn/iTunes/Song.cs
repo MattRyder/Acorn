@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Acorn
+namespace Acorn.iTunes
 {
     public class Song
     {

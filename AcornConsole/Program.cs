@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Acorn.iTunes;
+using Acorn.ID3;
+using System.IO;
 
 namespace AcornConsole
 {
@@ -8,18 +10,10 @@ namespace AcornConsole
     {
         static void Main(string[] args)
         {
-            Library library = new Library(@"C:\Users\USERNAME\Music\iTunes\iTunes Music Library.xml");
-            List<Song> mySongs = library.initializeLibrary();
+            ID3Parser parser = new ID3Parser();
 
-            if (mySongs != null)
-            {
-                foreach (Song song in mySongs)
-                {
-                    Console.Write("Song Name: {0}\n" +
-                                  "    Album: {1}\n" +
-                                  "   Artist: {2}\n\n", song.getAttribute("Name"), song.getAttribute("Album"), song.getAttribute("Artist"));
-                }
-            }
+            Stream stream = File.OpenRead(@"C:\Users\Public\Music\Sample Music\Kalimba.mp3");
+            parser.parseHeader(stream);
 
             Console.ReadLine();
         }

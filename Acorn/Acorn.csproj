@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ID3\ID3Genre.cs" />
+    <Compile Include="ID3\ID3Parser.cs" />
     <Compile Include="iTunes\Library.cs" />
     <Compile Include="iTunes\LibraryParser.cs" />
-    <Compile Include="iTunes\Song.cs" />
+    <Compile Include="Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

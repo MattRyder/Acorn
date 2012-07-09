@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Acorn.iTunes
+namespace Acorn
 {
     public class Song
     {
@@ -8,7 +8,7 @@ namespace Acorn.iTunes
                                                   "Album", "Genre", "Kind", "Size", "Total Time", "Track Number",
                                                   "Track Count", "Year", "Date Modified", "Date Added", "Bit Rate",
                                                   "Sample Rate", "Comments", "Skip Count", "Skip Date", "Persistent ID", 
-                                                  "Location" };
+                                                  "Location", "Artwork" };
 
         Dictionary<string, object> songAttributes;
 
